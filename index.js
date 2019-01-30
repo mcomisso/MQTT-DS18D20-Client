@@ -1,5 +1,5 @@
 var mqtt = require('mqtt')
-var mqttClient = mqtt.connect('mqtt://192.168.0.2')
+var mqttClient = mqtt.connect('mqtt://localhost')
 var ds18b20 = require('ds18b20');
 
 mqttClient.on('connect', ()=> {
@@ -7,7 +7,6 @@ mqttClient.on('connect', ()=> {
   setInterval(function() {
     ds18b20.temperature('28-031700658aff', (err, value) => {
       mqttClient.publish('temp', '' + value)
-      console.log('Current temp is ', value);
     });  
   }, 1000);
 });
