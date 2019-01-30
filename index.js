@@ -6,7 +6,7 @@ mqttClient.on('connect', ()=> {
 
   setInterval(function() {
     ds18b20.temperature('28-031700658aff', (err, value) => {
-      mqttClient.publish('temp', '' + value)
+      mqttClient.publish('home/bedroom/m', '' + value)
     });  
   }, 1000);
 });
